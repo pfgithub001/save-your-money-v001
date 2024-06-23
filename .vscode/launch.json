@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SaveYourMoneyApplication<save-your-money>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "sbapp.save_your.money.SaveYourMoneyApplication",
+            "projectName": "save-your-money",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

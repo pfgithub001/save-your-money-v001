@@ -1,0 +1,27 @@
+services:
+
+  postgresql:
+    container_name: sym-db
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+    networks:
+      - mynetwork
+    volumes:
+      - mydbdata:/var/lib/postgresql/data
+
+  
+networks:
+  mynetwork:
+    driver: bridge
+    name: mynetwork
+
+
+volumes:
+  mydbdata:
