@@ -21,6 +21,6 @@ public class Movement extends DescriptionAmountItem {
     @ManyToOne
     @JoinColumn(name="expectedMovementId")
     @Getter @Setter
-    private ExpectedMovment expectedMovment;
+    private ExpectedMovement expectedMovement;
     
 }

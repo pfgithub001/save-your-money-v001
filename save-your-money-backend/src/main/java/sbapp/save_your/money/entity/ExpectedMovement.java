@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "\"expected_movements\"")
-public class ExpectedMovment extends DescriptionAmountItem {
+public class ExpectedMovement extends DescriptionAmountItem {
 
     @OneToOne
     @JoinColumn(name = "amountFrequencyId", nullable = false)

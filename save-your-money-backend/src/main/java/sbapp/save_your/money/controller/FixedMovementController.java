@@ -4,52 +4,44 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.*;
 
-import sbapp.save_your.money.entity.FixedMovement;
+import sbapp.save_your.money.dto.FixedMovementDTO;
 import sbapp.save_your.money.service.FixedMovementService;
-import org.springframework.web.bind.annotation.GetMapping;
-
 
 @RestController
 @RequestMapping("/fixedMovement")
 @CrossOrigin
-
 public class FixedMovementController {
 
-    public final FixedMovementService fixedMovementService;
+    private final FixedMovementService fixedMovementService;
 
-    public FixedMovementController(FixedMovementService fixedMovementService) { this.fixedMovementService = fixedMovementService; }
+    public FixedMovementController(FixedMovementService fixedMovementService) { 
+        this.fixedMovementService = fixedMovementService; 
+    }
 
     @GetMapping("/all")
-    public ResponseEntity<List<FixedMovement>> getAllFixedMovements() {
-        List<FixedMovement> fixedMovements = fixedMovementService.findAllFixedMovements();
-        return new ResponseEntity<>(fixedMovements, HttpStatus.OK);
+    public ResponseEntity<List<FixedMovementDTO>> getAllFixedMovements() {
+        List<FixedMovementDTO> fixedMovementsDTO = fixedMovementService.findAllFixedMovements();
+        return new ResponseEntity<>(fixedMovementsDTO, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<FixedMovement> getFixedMovementById(@PathVariable("id") Long id) {
-        FixedMovement fixedMovement = fixedMovementService.findFixedMovementById(id);
-        return new ResponseEntity<>(fixedMovement, HttpStatus.OK);
+    public ResponseEntity<FixedMovementDTO> getFixedMovementById(@PathVariable("id") Long id) {
+        FixedMovementDTO fixedMovementDTO = fixedMovementService.findFixedMovementById(id);
+        return new ResponseEntity<>(fixedMovementDTO, HttpStatus.OK);
     }       
 
     @PostMapping("/add")
-    public ResponseEntity<FixedMovement> addFixedMovement(@RequestBody FixedMovement fixedMovement) {
-        FixedMovement newFixedMovement = fixedMovementService.addFixedMovement(fixedMovement);
-        return new ResponseEntity<>(newFixedMovement, HttpStatus.CREATED);
+    public ResponseEntity<FixedMovementDTO> addFixedMovement(@RequestBody FixedMovementDTO fixedMovementDTO) {
+        FixedMovementDTO newFixedMovementDTO = fixedMovementService.addFixedMovement(fixedMovementDTO);
+        return new ResponseEntity<>(newFixedMovementDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<FixedMovement> updateFixedMovement(@RequestBody FixedMovement fixedMovement) {
-        FixedMovement updateFixedMovement = fixedMovementService.updateFixedMovement(fixedMovement);
-        return new ResponseEntity<>(updateFixedMovement, HttpStatus.OK);
+    public ResponseEntity<FixedMovementDTO> updateFixedMovement(@RequestBody FixedMovementDTO fixedMovementDTO) {
+        FixedMovementDTO updatedFixedMovementDTO = fixedMovementService.updateFixedMovement(fixedMovementDTO);
+        return new ResponseEntity<>(updatedFixedMovementDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -57,5 +49,5 @@ public class FixedMovementController {
         fixedMovementService.deleteFixedMovement(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
+

@@ -4,52 +4,44 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.*;
 
-import sbapp.save_your.money.entity.Movement;
+import sbapp.save_your.money.dto.MovementDTO;
 import sbapp.save_your.money.service.MovementService;
-import org.springframework.web.bind.annotation.GetMapping;
-
 
 @RestController
 @RequestMapping("/movement")
 @CrossOrigin
-
 public class MovementController {
 
-    public final MovementService movementService;
+    private final MovementService movementService;
 
-    public MovementController(MovementService movementService) { this.movementService = movementService; }
+    public MovementController(MovementService movementService) { 
+        this.movementService = movementService; 
+    }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Movement>> getAllMovements() {
-        List<Movement> movements = movementService.findAllMovements();
-        return new ResponseEntity<>(movements, HttpStatus.OK);
+    public ResponseEntity<List<MovementDTO>> getAllMovements() {
+        List<MovementDTO> movementsDTO = movementService.findAllMovements();
+        return new ResponseEntity<>(movementsDTO, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Movement> getMovementById(@PathVariable("id") Long id) {
-        Movement movement = movementService.findMovementById(id);
-        return new ResponseEntity<>(movement, HttpStatus.OK);
+    public ResponseEntity<MovementDTO> getMovementById(@PathVariable("id") Long id) {
+        MovementDTO movementDTO = movementService.findMovementById(id);
+        return new ResponseEntity<>(movementDTO, HttpStatus.OK);
     }       
 
     @PostMapping("/add")
-    public ResponseEntity<Movement> addMovement(@RequestBody Movement movement) {
-        Movement newMovement = movementService.addMovement(movement);
-        return new ResponseEntity<>(newMovement, HttpStatus.CREATED);
+    public ResponseEntity<MovementDTO> addMovement(@RequestBody MovementDTO movementDTO) {
+        MovementDTO newMovementDTO = movementService.addMovement(movementDTO);
+        return new ResponseEntity<>(newMovementDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Movement> updateMovement(@RequestBody Movement movement) {
-        Movement updateMovement = movementService.updateMovement(movement);
-        return new ResponseEntity<>(updateMovement, HttpStatus.OK);
+    public ResponseEntity<MovementDTO> updateMovement(@RequestBody MovementDTO movementDTO) {
+        MovementDTO updatedMovementDTO = movementService.updateMovement(movementDTO);
+        return new ResponseEntity<>(updatedMovementDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -57,5 +49,5 @@ public class MovementController {
         movementService.deleteMovement(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }
+

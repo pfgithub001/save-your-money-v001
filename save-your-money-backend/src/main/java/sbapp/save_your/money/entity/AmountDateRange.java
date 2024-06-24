@@ -38,6 +38,7 @@ public class AmountDateRange {
 
     @ManyToOne
     @JoinColumn(name="fixedMovementId")
+    @Getter @Setter
     private FixedMovement fixedMovement;
     
 }

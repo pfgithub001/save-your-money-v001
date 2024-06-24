@@ -347,7 +347,7 @@
 											"top": 645,
 											"width": 190.43603515625,
 											"height": 13,
-											"text": "+spendingExpectationId: number",
+											"text": "+expectedMovementId: number",
 											"horizontalAlignment": 0
 										}
 									],
@@ -469,7 +469,7 @@
 											"top": 599,
 											"width": 174.51611328125,
 											"height": 13,
-											"text": "SpendigExpectation"
+											"text": "ExpectedMovement"
 										},
 										{
 											"_type": "LabelView",
@@ -3090,7 +3090,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGQNRDu1Nu+TZA="
 							},
-							"name": "spendingExpectationId",
+							"name": "expectedMovementId",
 							"type": "number"
 						}
 					]
@@ -3101,7 +3101,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SpendigExpectation",
+					"name": "ExpectedMovement",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
