@@ -12,8 +12,10 @@ public interface MovementMapper {
     MovementMapper INSTANCE = Mappers.getMapper(MovementMapper.class);
 
     @Mapping(source = "expectedMovement", target = "expectedMovementDTO")
+    @Mapping(source = "profile.id", target = "profileId")
     MovementDTO toDto(Movement movement);
 
     @Mapping(source = "expectedMovementDTO", target = "expectedMovement")
+    @Mapping(source = "profileId", target = "profile.id")
     Movement toEntity(MovementDTO movementDTO);
 }

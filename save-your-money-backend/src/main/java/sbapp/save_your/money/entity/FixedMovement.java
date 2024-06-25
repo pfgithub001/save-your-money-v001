@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -22,5 +23,10 @@ public class FixedMovement extends DescriptionIntem {
     @OneToMany(mappedBy = "fixedMovement")
     @Getter @Setter
     private List<AmountDateRange> amountDateRanges;
+
+    @ManyToOne
+    @JoinColumn(name="profileId")
+    @Getter @Setter
+    private Profile profile;
 
 }

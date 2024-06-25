@@ -22,5 +22,10 @@ public class Movement extends DescriptionAmountItem {
     @JoinColumn(name="expectedMovementId")
     @Getter @Setter
     private ExpectedMovement expectedMovement;
+
+    @ManyToOne
+    @JoinColumn(name="profileId")
+    @Getter @Setter
+    private Profile profile;
     
 }

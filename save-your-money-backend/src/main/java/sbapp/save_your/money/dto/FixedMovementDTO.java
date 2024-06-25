@@ -13,4 +13,5 @@ public class FixedMovementDTO {
     private String description;
     private AmountFrequencyDTO amountFrequencyDTO;
     private List<AmountDateRangeDTO> amountDateRangesDTO;
+    private Long profileId;
 }

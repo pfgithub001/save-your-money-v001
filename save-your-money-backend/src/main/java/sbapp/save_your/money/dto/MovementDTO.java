@@ -15,5 +15,6 @@ public class MovementDTO {
     private BigDecimal amount;
     private Date date;
     private ExpectedMovementDTO expectedMovementDTO;
+    private Long profileId;
 
 }

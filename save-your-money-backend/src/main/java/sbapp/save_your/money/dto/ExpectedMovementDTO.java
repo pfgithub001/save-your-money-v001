@@ -13,4 +13,5 @@ import lombok.Getter;
         private String description;
         private BigDecimal amount;
         private AmountFrequencyDTO amountFrequencyDTO;
+        private Long profileId;
     }

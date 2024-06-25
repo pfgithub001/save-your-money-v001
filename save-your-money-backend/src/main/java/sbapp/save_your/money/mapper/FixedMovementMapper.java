@@ -13,9 +13,11 @@ public interface FixedMovementMapper {
 
     @Mapping(source = "amountFrequency", target = "amountFrequencyDTO")
     @Mapping(source = "amountDateRanges", target = "amountDateRangesDTO")
+    @Mapping(source = "profile.id", target = "profileId")
     FixedMovementDTO toDto(FixedMovement fixedMovement);
 
     @Mapping(source = "amountFrequencyDTO", target = "amountFrequency")
     @Mapping(source = "amountDateRangesDTO", target = "amountDateRanges")
+    @Mapping(source = "profileId", target = "profile.id")
     FixedMovement toEntity(FixedMovementDTO fixedMovementDTO);
 }

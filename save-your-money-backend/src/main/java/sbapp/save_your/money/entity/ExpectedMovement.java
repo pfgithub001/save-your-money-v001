@@ -2,6 +2,7 @@ package sbapp.save_your.money.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -15,5 +16,10 @@ public class ExpectedMovement extends DescriptionAmountItem {
     @JoinColumn(name = "amountFrequencyId", nullable = false)
     @Getter @Setter
     private AmountFrequency amountFrequency;
+
+    @ManyToOne
+    @JoinColumn(name="profileId")
+    @Getter @Setter
+    private Profile profile;
     
 }
